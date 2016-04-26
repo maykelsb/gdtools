@@ -1,0 +1,24 @@
+{
+  "name": "colecoes",
+  "description": "gerenciamento de colecoes",
+  "main": "web/app_dev.php",
+  "authors": [
+    "Maykel S. Braz <maykelsb@yahoo.com.br>"
+  ],
+  "keywords": [
+    "colecoes"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "app/Resources/bower"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
