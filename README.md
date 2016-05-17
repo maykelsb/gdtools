@@ -4,6 +4,5 @@ GDTools é um sistema que visa auxiliar os criadores de jogos de mesa oferecendo
 ---
 Depois de clonar o repostório em seu diretório de trabalho, execute os seguinets passos:
 
-`composer install`
-
-`bower install`
+* `composer install`
+* `bower install`
