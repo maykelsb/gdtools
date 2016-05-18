@@ -1,6 +1,6 @@
 {
   "name": "colecoes",
-  "description": "gerenciamento de colecoes",
+  "description": "GameDev Tools",
   "main": "web/app_dev.php",
   "authors": [
     "Maykel S. Braz <maykelsb@yahoo.com.br>"
