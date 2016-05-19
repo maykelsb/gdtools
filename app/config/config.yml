@@ -79,7 +79,7 @@ fos_rest:
         force_redirects:
             html: true
         failed_validation: HTTP_BAD_REQUEST
-        view_response_listener: force
+        # view_response_listener: force
     disable_csrf_role: ROLE_API
     # view_handler: 
 

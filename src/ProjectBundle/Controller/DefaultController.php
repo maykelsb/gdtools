@@ -5,6 +5,7 @@ namespace ProjectBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends FOSRestController
 {
@@ -27,8 +28,8 @@ class DefaultController extends FOSRestController
      */
 	public function getProjectsAction()
 	{
-		$view = View::create();
-        return $view->setData($this->data);
+		$response = new JsonResponse();
+		return $response->setData($this->data);
 	}
 
     /**
@@ -36,8 +37,8 @@ class DefaultController extends FOSRestController
      */
 	public function getProjectAction($id)
 	{
-		$view = View::create();
-		return $view->setData($this->data[$id])->handleView();
+		$response = new JsonResponse();
+		return $response->setData($this->data[$id]);
 	}
 
     /**
