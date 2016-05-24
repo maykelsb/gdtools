@@ -10,59 +10,37 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class DefaultController extends FOSRestController
 {
 	protected $data = [
-		['id' => 1, 'name' => 'Guild Wars', 'description' => 'Um jogo de cartinhas para descobrir quem é o melhor gestor de guildas'],
-		['id' => 2, 'name' => 'Zankar', 'description' => 'Um tower defense de tabuleiro com uma mecânica bizarra de movimentação'],
-		['id' => 3, 'name' => 'Dragonaltas', 'description' => 'E então, você é o melhor piloto de dragão?'],
+		1 => ['id' => 1, 'name' => 'Guild Wars', 'description' => 'Um jogo de cartinhas para descobrir quem é o melhor gestor de guildas'],
+		2 => ['id' => 2, 'name' => 'Zankar', 'description' => 'Um tower defense de tabuleiro com uma mecânica bizarra de movimentação'],
+		3 => ['id' => 3, 'name' => 'Dragonaltas', 'description' => 'E então, você é o melhor piloto de dragão?'],
 	];
 
-    /**
-     * @Route("/")
-     */
-    public function indexAction()
-    {
-        return $this->render('ProjectBundle:Default:index.html.twig');
-    }
-
-    /**
-     * @Route("/projects")
-     */
 	public function getProjectsAction()
 	{
-		$response = new JsonResponse();
-		return $response->setData($this->data);
+        return $this->handleView(
+            $this->view($this->data, 200)
+        );
 	}
 
-    /**
-     * @Route("/projects/{id}")
-     */
 	public function getProjectAction($id)
 	{
-		$response = new JsonResponse();
-		return $response->setData($this->data[$id]);
+		return $this->handleView(
+            $this->view($this->data[$id], 200)
+        );
 	}
 
-    /**
-     * @Route("/projects/{id}")
-     * @Route("/projects")
-     */
-	public function postSaveProjectAction($id = null)
-	{
+//	public function postSaveProjectAction($id = null)
+//	{
+//
+//	}
 
-	}
+//	public function putUpsertProjectAction($id)
+//	{
+//
+//	}
 
-    /**
-     * @Route("/projects/{id}")
-     */
-	public function putUpsertProjectAction($id)
-	{
-		
-	}
-
-    /**
-     * @Route("/projects/{id}")
-     */
-	public function deleteProjectAction($id)
-	{
-
-	}
+//	public function deleteProjectAction($id)
+//	{
+//
+//	}
 }

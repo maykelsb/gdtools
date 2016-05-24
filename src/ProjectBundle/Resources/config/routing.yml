@@ -1,0 +1,11 @@
+gdtools_rest_get_projects:
+    type: rest
+#    prefix: /v1
+#    path: /projects
+#    defaults: { _controller: ProjectBundle:Default:getProjects}
+    resource: "ProjectBundle\\Controller\\DefaultController"
+    name_prefix: api_
+
+#gdtools_rest_get_projects_id:
+#    path: /projects/{id}
+#    defaults: { _controller: ProjectBundle:Default:getProject}
