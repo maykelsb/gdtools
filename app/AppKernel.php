@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             # Bundle de serialização, requerido pelo FOSRestBundle
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            # Bundle de geração de documentação
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
             # Bundle local de projetos
             new ProjectBundle\ProjectBundle(),
