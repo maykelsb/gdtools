@@ -42,7 +42,10 @@ class Project
      */
     private $id;
 
-
+    public function __construct()
+    {
+        $this->setCreation(new \DateTime());
+    }
 
     /**
      * Set name
