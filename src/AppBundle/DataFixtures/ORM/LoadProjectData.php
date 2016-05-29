@@ -3,7 +3,7 @@
  * Fixture de carga de dados de projetos.
  */
 
-namespace ProjectBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

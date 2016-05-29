@@ -3,7 +3,7 @@ gdtools_rest_get_projects:
 #    prefix: /v1
 #    path: /projects
 #    defaults: { _controller: ProjectBundle:Default:getProjects}
-    resource: "ProjectBundle\\Controller\\DefaultController"
+    resource: "AppBundle\\Controller\\ProjectController"
     name_prefix: api_
 
 #gdtools_rest_get_projects_id:

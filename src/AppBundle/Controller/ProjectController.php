@@ -1,9 +1,9 @@
 <?php
 
-namespace ProjectBundle\Controller;
+namespace AppBundle\Controller;
 
-use ProjectBundle\Entity\Project;
-use ProjectBundle\Form\Type\ProjectType;
+use AppBundle\Entity\Project;
+use AppBundle\Form\Type\ProjectType;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Util\Codes;
@@ -12,14 +12,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-class DefaultController extends FOSRestController
+class ProjectController extends FOSRestController
 {
     /**
      * Retrieves from the database all projects and return them as a collection.
      *
      * @ApiDoc(
      *  description="Gets a collection of Project",
-     *  output = { "class" = "ProjectBundle\Entity\Project", "collection" = true },
+     *  output = { "class" = "AppBundle\Entity\Project", "collection" = true },
      *  statusCodes = {
      *      200 = "Returned when successful"
      *  }
@@ -29,7 +29,7 @@ class DefaultController extends FOSRestController
 	public function getProjectsAction()
 	{
         $projects = $this->getDoctrine()
-            ->getRepository('ProjectBundle:Project')
+            ->getRepository('AppBundle:Project')
             ->findAll();
 
         return $this->handleView(
@@ -42,7 +42,7 @@ class DefaultController extends FOSRestController
      *
      * @ApiDoc(
      *  description = "Retrieves a Project for a given id",
-     *  output = "ProjectBundle\Entity\Project",
+     *  output = "AppBundle\Entity\Project",
      *  resource = true,
      *  statusCodes = {
      *      200 = "Returned when successful",
@@ -50,9 +50,9 @@ class DefaultController extends FOSRestController
      *  }
      * )
      *
-     * @ParamConverter("project", class="ProjectBundle\Entity\Project")
+     * @ParamConverter("project", class="AppBundle\Entity\Project")
      *
-     * @param ProjectBundle\Entity\Project $project The Project to be fetched
+     * @param AppBundle\Entity\Project $project The Project to be fetched
      * @return Response
      */
 	public function getProjectAction(Project $project)
@@ -110,9 +110,9 @@ class DefaultController extends FOSRestController
      *  }
      * )
      *
-     * @ParamConverter("project", class="ProjectBundle\Entity\Project")
+     * @ParamConverter("project", class="AppBundle\Entity\Project")
      *
-     * @param ProjectBundle\Entity\Project $project The Project to be removed
+     * @param AppBundle\Entity\Project $project The Project to be removed
      * @return Response
      */
 	public function deleteProjectAction(Project $project)
@@ -144,9 +144,9 @@ class DefaultController extends FOSRestController
      *  }
      * )
      *
-     * @ParamConverter("project", class="ProjectBundle\Entity\Project")
+     * @ParamConverter("project", class="AppBundle\Entity\Project")
      *
-     * @param ProjectBundle\Entity\Project $project The Project to be updated
+     * @param AppBundle\Entity\Project $project The Project to be updated
      * @param Request $request Data for update the Project
      * @return Response
      */

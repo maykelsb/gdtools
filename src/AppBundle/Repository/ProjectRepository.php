@@ -1,6 +1,6 @@
 <?php
 
-namespace ProjectBundle\Repository;
+namespace AppBundle\Repository;
 
 /**
  * ProjectRepository
