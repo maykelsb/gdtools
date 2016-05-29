@@ -50,15 +50,15 @@ class DefaultController extends FOSRestController
      *  }
      * )
      *
-     * @ParamConverter("id", class="ProjectBundle\Entity\Project")
+     * @ParamConverter("project", class="ProjectBundle\Entity\Project")
      *
-     * @param ProjectBundle\Entity\Project $id
+     * @param ProjectBundle\Entity\Project $project
      * @return type
      */
-	public function getProjectAction(Project $id)
+	public function getProjectAction(Project $project)
 	{
 		return $this->handleView(
-            $this->view($id, Codes::HTTP_OK)
+            $this->view($project, Codes::HTTP_OK)
         );
 	}
 
@@ -76,10 +76,7 @@ class DefaultController extends FOSRestController
             return $this->handleView(
                 $this->routeRedirectView(
                     'api_get_project',
-                    [
-                        'id' => $project->getId(),
-                        '_format' => 'json'
-                    ],
+                    ['id' => $project->getId()],
                     Codes::HTTP_CREATED
                 )
             );
@@ -88,13 +85,34 @@ class DefaultController extends FOSRestController
         return ['form' => $form];
 	}
 
+    /**
+     *
+     *
+     * @ParamConverter("project", class="ProjectBundle\Entity\Project")
+     *
+     * @param type $project
+     */
+	public function deleteProjectAction(Project $project)
+	{
+        $projectId = $project->getId();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($project);
+        $em->flush();
+
+        return $this->handleView(
+            $this->routeRedirectView(
+                'api_get_project',
+                ['id' => $projectId],
+                Codes::HTTP_NO_CONTENT
+            )
+        );
+	}
+
 //	public function putUpsertProjectAction($id)
 //	{
 //
 //	}
 
-//	public function deleteProjectAction($id)
-//	{
-//
-//	}
+
 }
