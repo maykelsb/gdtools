@@ -6,6 +6,7 @@ use ProjectBundle\Entity\Project;
 use ProjectBundle\Form\Type\ProjectType;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Util\Codes;
 use Symfony\Component\HttpFoundation\Request;
 // -- Annotations
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -32,7 +33,7 @@ class DefaultController extends FOSRestController
             ->findAll();
 
         return $this->handleView(
-            $this->view($projects, 200)
+            $this->view($projects, Codes::HTTP_OK)
         );
 	}
 
@@ -57,7 +58,7 @@ class DefaultController extends FOSRestController
 	public function getProjectAction(Project $id)
 	{
 		return $this->handleView(
-            $this->view($id, 200)
+            $this->view($id, Codes::HTTP_OK)
         );
 	}
 
@@ -67,16 +68,24 @@ class DefaultController extends FOSRestController
         $form = $this->createForm(ProjectType::class, $project);
         $form->submit($request->request->all());
 
-        var_dump($form->getErrors());
-        die();
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
 
-
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            die('bom!');
+            return $this->handleView(
+                $this->routeRedirectView(
+                    'api_get_project',
+                    [
+                        'id' => $project->getId(),
+                        '_format' => 'json'
+                    ],
+                    Codes::HTTP_CREATED
+                )
+            );
         }
 
-        die('ruim');
+        return ['form' => $form];
 	}
 
 //	public function putUpsertProjectAction($id)
