@@ -6,3 +6,5 @@ Depois de clonar o repostório em seu diretório de trabalho, execute os seguine
 
 * `composer install`
 * `bower install`
+* Execute os scripts armazenados em: `app/database/creation.sql`
+* Carregue as fixtures: `php bin/console doctrine:fixtures:load`
