@@ -6,7 +6,3 @@ CREATE TABLE `gdtools`.`project` (
   PRIMARY KEY (`id`))
 COMMENT = 'Store game projects';
 ---
-ALTER TABLE `gdtools`.`project`
-RENAME TO  `gdtools`.`projects` ;
-
-
