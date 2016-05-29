@@ -76,7 +76,7 @@ class DefaultController extends FOSRestController
             return $this->handleView(
                 $this->routeRedirectView(
                     'api_get_project',
-                    ['id' => $project->getId()],
+                    ['project' => $project->getId()],
                     Codes::HTTP_CREATED
                 )
             );
@@ -103,16 +103,38 @@ class DefaultController extends FOSRestController
         return $this->handleView(
             $this->routeRedirectView(
                 'api_get_project',
-                ['id' => $projectId],
+                ['project' => $projectId],
                 Codes::HTTP_NO_CONTENT
             )
         );
 	}
 
-//	public function putUpsertProjectAction($id)
-//	{
-//
-//	}
+    /**
+     *
+     *
+     * @ParamConverter("project", class="ProjectBundle\Entity\Project")
+     *
+     * @param Project $project
+     */
+	public function putProjectAction(Project $project, Request $request)
+	{
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->submit($request->request->all());
 
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
 
+            return $this->handleView(
+                $this->routeRedirectView(
+                    'api_get_project',
+                    ['project' => $project->getId()],
+                    Codes::HTTP_NO_CONTENT
+                )
+            );
+        }
+
+        return ['form' => $form];
+	}
 }
