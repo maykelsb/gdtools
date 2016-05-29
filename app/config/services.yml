@@ -9,6 +9,6 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
     project.form.type.project:
-        class: ProjectBundle\Form\Type\ProjectType
+        class: AppBundle\Form\Type\ProjectType
         tags:
             - { name: form.type }

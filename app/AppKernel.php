@@ -23,8 +23,8 @@ class AppKernel extends Kernel
             # Bundle de geração de documentação
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
-            # Bundle local de projetos
-            new ProjectBundle\ProjectBundle(),
+            # App bundle
+            new AppBundle\AppBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

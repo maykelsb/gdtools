@@ -1,6 +1,6 @@
-project:
+app:
     type: rest
-    resource: "@ProjectBundle/Resources/config/routing.yml"
+    resource: "@AppBundle/Resources/config/routing.yml"
 
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
