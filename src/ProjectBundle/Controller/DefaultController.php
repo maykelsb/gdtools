@@ -136,7 +136,7 @@ class DefaultController extends FOSRestController
      * Updates a Project.
      *
      * @ApiDoc(
-     *  description = "Update the data for a given id with the submitted data",
+     *  description = "Updates the data for a given id with the submitted data",
      *  statusCodes = {
      *      201 = "When the project has been updated",
      *      400 = "When the submitted form was not valid",
