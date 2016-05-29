@@ -15,7 +15,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class DefaultController extends FOSRestController
 {
     /**
-     * Retrieve from the database all projects and return them as a collection.
+     * Retrieves from the database all projects and return them as a collection.
      *
      * @ApiDoc(
      *  description="Gets a collection of Project",
@@ -24,7 +24,7 @@ class DefaultController extends FOSRestController
      *      200 = "Returned when successful"
      *  }
      * )
-     * @return type
+     * @return Response
      */
 	public function getProjectsAction()
 	{
@@ -38,7 +38,7 @@ class DefaultController extends FOSRestController
 	}
 
     /**
-     * Retrieve a single Project from the database.
+     * Retrieves a single Project from the database.
      *
      * @ApiDoc(
      *  description = "Retrieves a Project for a given id",
@@ -52,8 +52,8 @@ class DefaultController extends FOSRestController
      *
      * @ParamConverter("project", class="ProjectBundle\Entity\Project")
      *
-     * @param ProjectBundle\Entity\Project $project
-     * @return type
+     * @param ProjectBundle\Entity\Project $project The Project to be fetched
+     * @return Response
      */
 	public function getProjectAction(Project $project)
 	{
@@ -62,6 +62,20 @@ class DefaultController extends FOSRestController
         );
 	}
 
+    /**
+     * Creates a new Project.
+     *
+     * @ApiDoc(
+     *  description = "Creates a new Project",
+     *  statusCodes = {
+     *      201 = "Returned when a new Project has been created",
+     *      400 = "Returned when the submitted form has errors"
+     *  }
+     * )
+     *
+     * @param Request $request Data for the new Project
+     * @return Response
+     */
 	public function postProjectAction(Request $request)
 	{
         $project = new Project();
@@ -82,15 +96,24 @@ class DefaultController extends FOSRestController
             );
         }
 
-        return ['form' => $form];
+        return $this->handleView($this->view($form));
 	}
 
     /**
+     * Erases a Project.
      *
+     * @ApiDoc(
+     *  description = "Removes a Project for a given id",
+     *  statusCodes = {
+     *      201 = "When the project has been removed",
+     *      404 = "When the project has not been found"
+     *  }
+     * )
      *
      * @ParamConverter("project", class="ProjectBundle\Entity\Project")
      *
-     * @param type $project
+     * @param ProjectBundle\Entity\Project $project The Project to be removed
+     * @return Response
      */
 	public function deleteProjectAction(Project $project)
 	{
@@ -110,11 +133,22 @@ class DefaultController extends FOSRestController
 	}
 
     /**
+     * Updates a Project.
      *
+     * @ApiDoc(
+     *  description = "Update the data for a given id with the submitted data",
+     *  statusCodes = {
+     *      201 = "When the project has been updated",
+     *      400 = "When the submitted form was not valid",
+     *      404 = "When the project has not been found"
+     *  }
+     * )
      *
      * @ParamConverter("project", class="ProjectBundle\Entity\Project")
      *
-     * @param Project $project
+     * @param ProjectBundle\Entity\Project $project The Project to be updated
+     * @param Request $request Data for update the Project
+     * @return Response
      */
 	public function putProjectAction(Project $project, Request $request)
 	{
@@ -135,6 +169,6 @@ class DefaultController extends FOSRestController
             );
         }
 
-        return ['form' => $form];
+        return $this->handleView($this->view($form));
 	}
 }
