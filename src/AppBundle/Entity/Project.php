@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Project
@@ -13,9 +14,25 @@ use Doctrine\ORM\Mapping as ORM;
 class Project
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     * @Assert\NotBlank(
+     *  message = "Name can't be empty"
+     * )
+     * @Assert\Length(
+     *  max = 45,
+     *  maxMessage = "Name can't have more than {{ limit }} characters"
+     * )
      */
     private $name;
 
@@ -23,6 +40,9 @@ class Project
      * @var string
      *
      * @ORM\Column(name="description", type="text", length=65535, nullable=true)
+     * @Assert\NotBlank(
+     *  message = "Description can't be emtpy"
+     * )
      */
     private $description;
 
@@ -31,16 +51,7 @@ class Project
      *
      * @ORM\Column(name="creation", type="datetime", nullable=true)
      */
-    private $creation = 'CURRENT_TIMESTAMP';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    private $creation;
 
     public function __construct()
     {
