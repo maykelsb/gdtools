@@ -24,6 +24,7 @@ class ProjectController extends FOSRestController
      *      200 = "Returned when successful"
      *  }
      * )
+     *
      * @return Response
      */
 	public function getProjectsAction()
@@ -50,7 +51,6 @@ class ProjectController extends FOSRestController
      *      404 = "Returned when the project is not found"
      *  }
      * )
-     *
      * @ParamConverter("project", class="AppBundle\Entity\Project")
      *
      * @param AppBundle\Entity\Project $project The Project to be fetched
@@ -111,7 +111,6 @@ class ProjectController extends FOSRestController
      *      404 = "When the project has not been found"
      *  }
      * )
-     *
      * @ParamConverter("project", class="AppBundle\Entity\Project")
      *
      * @param AppBundle\Entity\Project $project The Project to be removed
@@ -145,7 +144,6 @@ class ProjectController extends FOSRestController
      *      404 = "When the project has not been found"
      *  }
      * )
-     *
      * @ParamConverter("project", class="AppBundle\Entity\Project")
      *
      * @param AppBundle\Entity\Project $project The Project to be updated
