@@ -1,11 +1,9 @@
-gdtools_rest_get_projects:
+gdtools_rest_projects:
     type: rest
-#    prefix: /v1
-#    path: /projects
-#    defaults: { _controller: ProjectBundle:Default:getProjects}
-    resource: "AppBundle\\Controller\\ProjectController"
+    resource: 'AppBundle\Controller\ProjectController'
     name_prefix: api_
 
-#gdtools_rest_get_projects_id:
-#    path: /projects/{id}
-#    defaults: { _controller: ProjectBundle:Default:getProject}
+gdtools_rest_decks:
+    type: rest
+    resource: 'AppBundle\Controller\DeckController'
+    name_prefix: api_
