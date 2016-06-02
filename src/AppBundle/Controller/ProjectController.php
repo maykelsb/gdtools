@@ -34,7 +34,7 @@ class ProjectController extends FOSRestController
 
         return $this->handleView(
             $this->view($projects, Codes::HTTP_OK)
-                ->setTemplate('AppBundle:Project:show-projects.html.twig')
+                ->setTemplate('AppBundle:Default:show.html.twig')
         );
 	}
 
@@ -60,7 +60,7 @@ class ProjectController extends FOSRestController
 	{
 		return $this->handleView(
             $this->view($project, Codes::HTTP_OK)
-                ->setTemplate('AppBundle:Project:show-projects.html.twig')
+                ->setTemplate('AppBundle:Default:show.html.twig')
         );
 	}
 
