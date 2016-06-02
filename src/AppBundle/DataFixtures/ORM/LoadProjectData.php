@@ -5,36 +5,40 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use ProjectBundle\Entity\Project;
 
-class LoadProjectData implements FixtureInterface
+use AppBundle\Entity\Project;
+
+class LoadProjectData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $project = new Project();
-        $project->setName('Guild Wars')
+        $gw = new Project();
+        $gw->setName('Guild Wars')
             ->setDescription('Um jogo de cartinhas para descobrir quem é o melhor gestor de guildas');
-
-        $manager->persist($project);
+        $manager->persist($gw);
         $manager->flush();
-        unset($project);
+        $this->addReference('gw', $gw);
 
-        $project = new Project();
-        $project->setName('Zankar')
+        $zk = new Project();
+        $zk->setName('Zankar')
             ->setDescription('Um tower defense de tabuleiro com uma mecânica bizarra de movimentação');
-
-        $manager->persist($project);
+        $manager->persist($zk);
         $manager->flush();
-        unset($project);
+        $this->addReference('zk', $zk);
 
-
-        $project = new Project();
-        $project->setName('Dragonautas')
+        $dn = new Project();
+        $dn->setName('Dragonautas')
             ->setDescription('E então, você é o melhor piloto de dragão?');
-
-        $manager->persist($project);
+        $manager->persist($dn);
         $manager->flush();
+        $this->addReference('dn', $dn);
+    }
+
+    public function getOrder()
+    {
+        return 1;
     }
 }
