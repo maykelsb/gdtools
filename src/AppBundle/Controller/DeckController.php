@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Project;
 use AppBundle\Entity\Deck;
+use AppBundle\Form\Type\DeckType;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Util\Codes;
@@ -76,7 +77,7 @@ class DeckController extends FOSRestController
      * @param Deck $deck
      * @return type
      */
-    public function deleteDeck(Deck $deck)
+    public function deleteDeckAction(Deck $deck)
     {
         $deckId = $deck->getId();
 
