@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="gdtoolsApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,7 +50,11 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             {% block body %}{% endblock %}
             <script src="/js/angular.min.js"></script>
-            {% block javascripts %}{% endblock %}
+            {% block javascripts %}
+                {% javascripts '@AppBundle/Resources/public/js/*' %}
+                    <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock %}
             </div>
         </div>
     </div>

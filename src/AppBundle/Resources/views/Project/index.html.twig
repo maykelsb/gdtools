@@ -1,2 +1,28 @@
 {%extends "base.html.twig" %}
 {% set active_page = 'app_projects' %}
+{% block body %}
+<div class="page-header">
+    <h1>Projetos</h1>
+</div>
+<table ng-controller="ProjectListController" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Nome</th>
+            <th>Criação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="project in projects">
+            <td>&nbsp;</td>
+            <td>[& project.name &]</td>
+            <td>[& project.description &]</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">No. projetos: [& projects.length &]</td>
+        </tr>
+    </tfoot>
+</table>
+{% endblock %}
