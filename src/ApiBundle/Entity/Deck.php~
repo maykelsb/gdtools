@@ -1,0 +1,55 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Deck
+ *
+ * @ORM\Table(name="deck", indexes={@ORM\Index(name="deck_fk_project_idx", columns={"project"})})
+ * @ORM\Entity
+ */
+class Deck
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Project
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="project", referencedColumnName="id")
+     * })
+     */
+    private $project;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="creation", type="datetime", nullable=false)
+     */
+    private $creation = 'CURRENT_TIMESTAMP';
+}
+
