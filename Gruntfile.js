@@ -16,6 +16,24 @@ module.exports = function(grunt) {
                 cwd: '<%= resourcesPath %>/angular',
                 src: '**/angular.min.js',
                 dest: 'web/js'
+            },
+            css_bootstrap: {
+                expand: true,
+                cwd: '<%= resourcesPath %>/bootstrap/dist/css',
+                src: '**/*.min.css',
+                dest: 'web/css'
+            },
+            css_bootstrap_fonts: {
+                expand: true,
+                cwd: '<%= resourcesPath %>/bootstrap/dist/fonts',
+                src: '**',
+                dest: 'web/fonts'
+            },
+            css_bootstrap_dashboard: {
+                expand: true,
+                cwd: '<%= resourcesPath %>/../',
+                src: '**/dashboard.css',
+                dest: 'web/css'
             }
         },
 
