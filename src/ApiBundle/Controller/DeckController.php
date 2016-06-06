@@ -21,7 +21,7 @@ class DeckController extends FOSRestController
      *  description = "Gets a collection of Decks related to a Project",
      *  output = { "class" = "ApiBundle\Entity\Deck", "collection" = true },
      *  statusCodes = {
-     *      200 = "Returned when successful
+     *      200 = "Returned when successful"
      *  }
      * )
      * @ParamConverter("project", class="ApiBundle\Entity\Project")
