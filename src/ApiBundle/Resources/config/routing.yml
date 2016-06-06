@@ -1,9 +1,9 @@
 gdtools_rest_projects:
     type: rest
-    resource: 'AppBundle\Controller\ProjectController'
+    resource: 'ApiBundle\Controller\ProjectController'
     name_prefix: api_
 
 gdtools_rest_decks:
     type: rest
-    resource: 'AppBundle\Controller\DeckController'
+    resource: 'ApiBundle\Controller\DeckController'
     name_prefix: api_

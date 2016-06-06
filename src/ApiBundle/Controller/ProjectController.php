@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace ApiBundle\Controller;
 
-use AppBundle\Entity\Project;
-use AppBundle\Form\Type\ProjectType;
+use ApiBundle\Entity\Project;
+use ApiBundle\Form\Type\ProjectType;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Util\Codes;
@@ -19,7 +19,7 @@ class ProjectController extends FOSRestController
      *
      * @ApiDoc(
      *  description="Gets a collection of Project",
-     *  output = { "class" = "AppBundle\Entity\Project", "collection" = true },
+     *  output = { "class" = "ApiBundle\Entity\Project", "collection" = true },
      *  statusCodes = {
      *      200 = "Returned when successful"
      *  }
@@ -30,12 +30,12 @@ class ProjectController extends FOSRestController
 	public function getProjectsAction()
 	{
         $projects = $this->getDoctrine()
-            ->getRepository('AppBundle:Project')
+            ->getRepository('ApiBundle:Project')
             ->findAll();
 
         return $this->handleView(
             $this->view($projects, Codes::HTTP_OK)
-                ->setTemplate('AppBundle:Default:show.html.twig')
+                ->setTemplate('ApiBundle:Default:show.html.twig')
         );
 	}
 
@@ -44,23 +44,23 @@ class ProjectController extends FOSRestController
      *
      * @ApiDoc(
      *  description = "Retrieves a Project for a given id",
-     *  output = "AppBundle\Entity\Project",
+     *  output = "ApiBundle\Entity\Project",
      *  resource = true,
      *  statusCodes = {
      *      200 = "Returned when successful",
      *      404 = "Returned when the project is not found"
      *  }
      * )
-     * @ParamConverter("project", class="AppBundle\Entity\Project")
+     * @ParamConverter("project", class="ApiBundle\Entity\Project")
      *
-     * @param AppBundle\Entity\Project $project The Project to be fetched
+     * @param ApiBundle\Entity\Project $project The Project to be fetched
      * @return Response
      */
 	public function getProjectAction(Project $project)
 	{
 		return $this->handleView(
             $this->view($project, Codes::HTTP_OK)
-                ->setTemplate('AppBundle:Default:show.html.twig')
+                ->setTemplate('ApiBundle:Default:show.html.twig')
         );
 	}
 
@@ -111,9 +111,9 @@ class ProjectController extends FOSRestController
      *      404 = "When the project has not been found"
      *  }
      * )
-     * @ParamConverter("project", class="AppBundle\Entity\Project")
+     * @ParamConverter("project", class="ApiBundle\Entity\Project")
      *
-     * @param AppBundle\Entity\Project $project The Project to be removed
+     * @param ApiBundle\Entity\Project $project The Project to be removed
      * @return Response
      */
 	public function deleteProjectAction(Project $project)
@@ -144,9 +144,9 @@ class ProjectController extends FOSRestController
      *      404 = "When the project has not been found"
      *  }
      * )
-     * @ParamConverter("project", class="AppBundle\Entity\Project")
+     * @ParamConverter("project", class="ApiBundle\Entity\Project")
      *
-     * @param AppBundle\Entity\Project $project The Project to be updated
+     * @param ApiBundle\Entity\Project $project The Project to be updated
      * @param Request $request Data for update the Project
      * @return Response
      */

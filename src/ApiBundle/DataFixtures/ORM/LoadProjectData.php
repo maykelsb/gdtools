@@ -3,13 +3,13 @@
  * Fixture de carga de dados de projetos.
  */
 
-namespace AppBundle\DataFixtures\ORM;
+namespace ApiBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use AppBundle\Entity\Project;
+use ApiBundle\Entity\Project;
 
 class LoadProjectData extends AbstractFixture implements OrderedFixtureInterface
 {

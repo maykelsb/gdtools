@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace ApiBundle\Controller;
 
-use AppBundle\Entity\Project;
-use AppBundle\Entity\Deck;
-use AppBundle\Form\Type\DeckType;
+use ApiBundle\Entity\Project;
+use ApiBundle\Entity\Deck;
+use ApiBundle\Form\Type\DeckType;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Util\Codes;
@@ -19,12 +19,12 @@ class DeckController extends FOSRestController
      *
      * @ApiDoc(
      *  description = "Gets a collection of Decks related to a Project",
-     *  output = { "class" = "AppBundle\Entity\Deck", "collection" = true },
+     *  output = { "class" = "ApiBundle\Entity\Deck", "collection" = true },
      *  statusCodes = {
      *      200 = "Returned when successful
      *  }
      * )
-     * @ParamConverter("project", class="AppBundle\Entity\Project")
+     * @ParamConverter("project", class="ApiBundle\Entity\Project")
      *
      * @param Project $project The project witch the desired Decks belongs to.
      * @return Response
@@ -32,12 +32,12 @@ class DeckController extends FOSRestController
     public function getProjectDecksAction(Project $project)
     {
         $decks = $this->getDoctrine()
-            ->getRepository('AppBundle:Deck')
+            ->getRepository('ApiBundle:Deck')
             ->findByProject($project);
 
         return $this->handleView(
             $this->view($decks, Codes::HTTP_OK)
-                ->setTemplate('AppBundle:Default:show.html.twig')
+                ->setTemplate('ApiBundle:Default:show.html.twig')
         );
     }
 
@@ -46,14 +46,14 @@ class DeckController extends FOSRestController
      *
      * @ApiDoc(
      *  description = "Retrieves a Deck for a given id",
-     *  output = "AppBundle\Entity\Deck",
+     *  output = "ApiBundle\Entity\Deck",
      *  resource = true,
      *  statusCodes = {
      *      200 = "Returned when successful",
      *      404 = "Returned when the Deck is not found"
      *  }
      * )
-     * @ParamConverter("deck", class="AppBundle\Entity\Deck")
+     * @ParamConverter("deck", class="ApiBundle\Entity\Deck")
      *
      * @param Deck $deck
      * @return Response
@@ -62,7 +62,7 @@ class DeckController extends FOSRestController
     {
         return $this->handleView(
             $this->view($deck, Codes::HTTP_OK)
-                ->setTemplate('AppBundle:Default:show.html.twig')
+                ->setTemplate('ApiBundle:Default:show.html.twig')
         );
     }
 
@@ -113,7 +113,7 @@ class DeckController extends FOSRestController
      *      404 = "When the Deck has not been found"
      *  }
      * )
-     * @ParamConverter("deck", class="AppBundle\Entity\Deck")
+     * @ParamConverter("deck", class="ApiBundle\Entity\Deck")
      *
      * @param Deck $deck The Deck to be erased.
      * @return Response
@@ -146,7 +146,7 @@ class DeckController extends FOSRestController
      *      404 = "When the Deck has not been found"
      *  }
      * )
-     * @ParamConverter("deck", class="AppBundle\Entity\Deck")
+     * @ParamConverter("deck", class="ApiBundle\Entity\Deck")
      *
      * @param Deck $deck The deck to be updated.
      * @param Request $request Data to update the Deck.

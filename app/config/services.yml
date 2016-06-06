@@ -5,10 +5,10 @@ parameters:
 
 services:
 #    service_name:
-#        class: AppBundle\Directory\ClassName
+#        class: ApiBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
     project.form.type.project:
-        class: AppBundle\Form\Type\ProjectType
+        class: ApiBundle\Form\Type\ProjectType
         tags:
             - { name: form.type }

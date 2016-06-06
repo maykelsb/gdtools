@@ -5,7 +5,7 @@
  * @author Maykel S. Braz <maykelsb@yahoo.com.br>
  */
 
-namespace AppBundle\Form\Type;
+namespace ApiBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +19,7 @@ class DeckType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('project', EntityType::class, [
-            'class' => 'AppBundle:Project',
+            'class' => 'ApiBundle:Project',
             'query_builder' => function(EntityRepository $er) {
                 return $er->createQueryBuilder('d')
                     ->orderBy('d.name', 'ASC');
@@ -34,7 +34,7 @@ class DeckType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Deck'
+            'data_class' => 'ApiBundle\Entity\Deck'
         ]);
     }
 }

@@ -3,7 +3,7 @@
  * Implements a form class to Entity\Project.
  */
 
-namespace AppBundle\Form\Type;
+namespace ApiBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,7 +22,7 @@ class ProjectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Project',
+            'data_class' => 'ApiBundle\Entity\Project',
         ]);
     }
 }

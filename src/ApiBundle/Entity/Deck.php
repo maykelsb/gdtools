@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,9 +22,9 @@ class Deck
     private $id;
 
     /**
-     * @var \AppBundle\Entity\Project
+     * @var \ApiBundle\Entity\Project
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\Project")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="project", referencedColumnName="id")
      * })
@@ -142,11 +142,11 @@ class Deck
     /**
      * Set project
      *
-     * @param \AppBundle\Entity\Project $project
+     * @param \ApiBundle\Entity\Project $project
      *
      * @return Deck
      */
-    public function setProject(\AppBundle\Entity\Project $project = null)
+    public function setProject(\ApiBundle\Entity\Project $project = null)
     {
         $this->project = $project;
 
@@ -156,7 +156,7 @@ class Deck
     /**
      * Get project
      *
-     * @return \AppBundle\Entity\Project
+     * @return \ApiBundle\Entity\Project
      */
     public function getProject()
     {
