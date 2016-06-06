@@ -19,6 +19,7 @@
     "app/Resources/bower"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "angular-bootstrap": "^1.3.3"
   }
 }
