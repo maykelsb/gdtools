@@ -22,7 +22,8 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             # Bundle de geração de documentação
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
-
+            # Assetic
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             # App bundle
             new ApiBundle\ApiBundle(),
             new AppBundle\AppBundle(),
