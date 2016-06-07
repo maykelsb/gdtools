@@ -1,5 +1,7 @@
 var gdtoolsApp = angular.module('gdtoolsApp', [
-    'projectList'
+    'ngRoute',
+    'projectList',
+    'home'
 ]).config(function($interpolateProvider){
     $interpolateProvider.startSymbol('[&').endSymbol('&]');
 });

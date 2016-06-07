@@ -9,8 +9,8 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-        '@AppBundle/Resources/public/js/project-list/*.module.js'
-        '@AppBundle/Resources/public/js/project-list/*.component.js' %}
+        '@AppBundle/Resources/public/js/*/*.module.js'
+        '@AppBundle/Resources/public/js/*/*.component.js' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {% javascripts '@AppBundle/Resources/public/js/project-list/project-list.template.html' output='js/project-list/project-list.template.html' %}

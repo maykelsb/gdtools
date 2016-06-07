@@ -17,6 +17,12 @@ module.exports = function(grunt) {
                 src: '**/angular.min.js',
                 dest: 'web/js'
             },
+            js_angular_rout: {
+                expand: true,
+                cwd: '<%= resourcesPath %>/angular-route',
+                src: '**/angular-route.min.js',
+                dest: 'web/js'
+            },
             css_bootstrap: {
                 expand: true,
                 cwd: '<%= resourcesPath %>/bootstrap/dist/css',

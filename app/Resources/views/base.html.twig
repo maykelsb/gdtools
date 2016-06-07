@@ -48,15 +48,23 @@
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            {% block body %}{% endblock %}
-            <script src="/js/angular.min.js"></script>
-            {% block javascripts %}
-                {% javascripts '@AppBundle/Resources/public/js/app.module.js' %}
-                    <script src="{{ asset_url }}"></script>
-                {% endjavascripts %}
-            {% endblock %}
+                <div ng-view></div>
+{#                {% block body %}{% endblock %}#}
+                <script src="/js/angular.min.js"></script>
+                <script src="/js/angular-route.min.js"></script>
+                {% block javascripts %}
+                    {% javascripts '@AppBundle/Resources/public/js/app.module.js'
+                                   '@AppBundle/Resources/public/js/app.config.js'
+                                   '@AppBundle/Resources/public/js/*/*.module.js'
+                                   '@AppBundle/Resources/public/js/*/*.component.js' %}
+                        <script src="{{ asset_url }}"></script>
+                    {% endjavascripts %}
+                    {% javascripts '@AppBundle/Resources/public/js/project-list/project-list.template.html' output='js/project-list/project-list.template.html' %}
+                    {% endjavascripts %}
+                {% endblock %}
             </div>
         </div>
     </div>
 </body>
 </html>
+
