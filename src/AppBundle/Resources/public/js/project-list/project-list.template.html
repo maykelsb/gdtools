@@ -1,6 +1,12 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 col-md-offset-9">
+        <div class="col-md-3 col-md-offset-6">
+            <select ng-model="$ctrl.orderProp" class="form-control" placeholder="Ordenação">
+                <option value="name">Nome</option>
+                <option value="creation">Mais novo</option>
+            </select>
+        </div>
+        <div class="col-md-3">
             <input class="form-control" placeholder="Pesquisar..." ng-model="$ctrl.query" />
         </div>
     </div>
@@ -11,19 +17,21 @@
                 <tr>
                     <th>&nbsp;</th>
                     <th>Nome</th>
+                    <th>Descrição</th>
                     <th>Criação</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="project in $ctrl.projects | filter:$ctrl.query">
+                <tr ng-repeat="project in $ctrl.projects | filter:$ctrl.query | orderBy:$ctrl.orderProp">
                     <td>&nbsp;</td>
                     <td>[& project.name &]</td>
                     <td>[& project.description &]</td>
+                    <td>[& project.creation &]</td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="text-right">No. projetos: [& ($ctrl.projects | filter:$ctrl.query).length  &]</td>
+                    <td colspan="4" class="text-right">No. projetos: [& ($ctrl.projects | filter:$ctrl.query).length  &]</td>
                 </tr>
             </tfoot>
         </table>
