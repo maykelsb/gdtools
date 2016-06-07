@@ -1,21 +1,31 @@
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>&nbsp;</th>
-            <th>Nome</th>
-            <th>Criação</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="project in $ctrl.projects">
-            <td>&nbsp;</td>
-            <td>[& project.name &]</td>
-            <td>[& project.description &]</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3" class="text-right">No. projetos: [& $ctrl.projects.length &]</td>
-        </tr>
-    </tfoot>
-</table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-9">
+            <input class="form-control" placeholder="Pesquisar..." ng-model="$ctrl.query" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Nome</th>
+                    <th>Criação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in $ctrl.projects | filter:$ctrl.query">
+                    <td>&nbsp;</td>
+                    <td>[& project.name &]</td>
+                    <td>[& project.description &]</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">No. projetos: [& ($ctrl.projects | filter:$ctrl.query).length  &]</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
