@@ -51,7 +51,7 @@
             {% block body %}{% endblock %}
             <script src="/js/angular.min.js"></script>
             {% block javascripts %}
-                {% javascripts '@AppBundle/Resources/public/js/*' %}
+                {% javascripts '@AppBundle/Resources/public/js/app.module.js' %}
                     <script src="{{ asset_url }}"></script>
                 {% endjavascripts %}
             {% endblock %}

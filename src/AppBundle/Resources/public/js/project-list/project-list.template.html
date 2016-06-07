@@ -1,0 +1,21 @@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Nome</th>
+            <th>Criação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="project in $ctrl.projects">
+            <td>&nbsp;</td>
+            <td>[& project.name &]</td>
+            <td>[& project.description &]</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">No. projetos: [& $ctrl.projects.length &]</td>
+        </tr>
+    </tfoot>
+</table>

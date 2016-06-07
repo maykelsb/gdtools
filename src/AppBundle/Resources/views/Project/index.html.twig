@@ -4,25 +4,15 @@
 <div class="page-header">
     <h1>Projetos</h1>
 </div>
-<table ng-controller="ProjectListController" class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>&nbsp;</th>
-            <th>Nome</th>
-            <th>Criação</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="project in projects">
-            <td>&nbsp;</td>
-            <td>[& project.name &]</td>
-            <td>[& project.description &]</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3" class="text-right">No. projetos: [& projects.length &]</td>
-        </tr>
-    </tfoot>
-</table>
+<project-list></project-list>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        '@AppBundle/Resources/public/js/project-list/*.module.js'
+        '@AppBundle/Resources/public/js/project-list/*.component.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% javascripts '@AppBundle/Resources/public/js/project-list/project-list.template.html' output='js/project-list/project-list.template.html' %}
+    {% endjavascripts %}
 {% endblock %}
