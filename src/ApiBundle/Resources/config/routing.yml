@@ -7,3 +7,8 @@ gdtools_rest_decks:
     type: rest
     resource: 'ApiBundle\Controller\DeckController'
     name_prefix: api_
+
+gdtools_rest_categories:
+    type: rest
+    resource: 'ApiBundle\Controller\CategoryController'
+    name_prefix: api_
