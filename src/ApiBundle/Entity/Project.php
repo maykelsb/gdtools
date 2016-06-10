@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="project")
  * @ORM\Entity
  */
-class Project
+class Project implements EntityInterface
 {
     /**
      * @var integer

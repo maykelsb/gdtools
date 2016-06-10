@@ -31,9 +31,10 @@ class DeckController extends FOSRestController
      */
     public function getProjectDecksAction(Project $project)
     {
-        $decks = $this->getDoctrine()
-            ->getRepository('ApiBundle:Deck')
-            ->findByProject($project);
+        $decks = $this
+            ->get('api.request_service')
+            ->find('ApiBundle:Deck', ['project' => $project]);
+
 
         return $this->handleView(
             $this->view($decks, Codes::HTTP_OK)

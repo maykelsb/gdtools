@@ -29,9 +29,8 @@ class ProjectController extends FOSRestController
      */
 	public function getProjectsAction()
 	{
-        $projects = $this->getDoctrine()
-            ->getRepository('ApiBundle:Project')
-            ->findAll();
+        $projects = $this->get('api.request_service')
+            ->all('ApiBundle:Project');
 
         return $this->handleView(
             $this->view($projects, Codes::HTTP_OK)

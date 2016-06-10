@@ -1,4 +1,12 @@
 services:
-#    project.example:
-#        class: ProjectBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    api.request_service:
+        class: ApiBundle\Services\RequestService
+        arguments: [ "@doctrine.orm.entity_manager", "@form.factory", "@service_container" ]
+
+    api.form.project_type:
+        class: ApiBundle\Form\Type\ProjectType
+        tags:
+            - { name: form.type }
+
+    api.entity.project:
+        class: ApiBundle\Entity\Project
