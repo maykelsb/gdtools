@@ -10,6 +10,10 @@ class CategoryController extends FOSRestController
 
     public function getCategoriesAction()
     {
-        return $this->handleView($this->view([], Codes::HTTP_OK));
+        $categories = $this->getDoctrine()
+            ->getRepository('ApiBundle:Category')
+            ->findAll();
+
+        return $this->handleView($this->view($categories, Codes::HTTP_OK));
     }
 }
