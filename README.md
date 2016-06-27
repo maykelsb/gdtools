@@ -7,6 +7,5 @@ Depois de clonar o repostório em seu diretório de trabalho, execute os seguine
 * `$ composer install`
 * `$ npm install`
 * `$ bower install`
-* `$ grunt`
 * Execute os scripts armazenados em: `app/database/creation.sql`
 * `$ php bin/console doctrine:fixtures:load`
