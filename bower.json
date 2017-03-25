@@ -1,12 +1,12 @@
 {
-  "name": "colecoes",
+  "name": "Game Design Tools",
   "description": "GameDev Tools",
   "main": "web/app_dev.php",
   "authors": [
     "Maykel S. Braz <maykelsb@yahoo.com.br>"
   ],
   "keywords": [
-    "colecoes"
+    "gdtools"
   ],
   "homepage": "",
   "private": true,
